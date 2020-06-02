@@ -9,6 +9,8 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.text :summary
       t.date :date
       t.integer :rating
+      t.integer :property_id
+      t.integer :visitor_id
 
       t.timestamps
     end
