@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   #rootroute
   root to: 'application#home'
 
-  resources :visitors
+  resources :visitors do 
+    resources :reviews 
+  end 
+  
   resources :reviews
   resources :properties
 
