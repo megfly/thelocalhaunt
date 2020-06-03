@@ -1,8 +1,12 @@
-Log In!
+<h1> LogIn </h1>
+
 <%= form_for @visitor do |f| %>
-    Username: <%= f.text_field :username %>
-    Password: <%= f.password_field :password %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <br><br>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br><br>
     <%= f.submit "Log In" %>
 
-    #my action is not /login, it is /visitor
 <% end %>
