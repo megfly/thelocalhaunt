@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
             session[:visitor_id] = @visitor.id 
             redirect_to visitor_path(@visitor) #show page 
         else 
-            redirect_to signup_path 
+            render :new 
+            #errors
         end
     end 
 end

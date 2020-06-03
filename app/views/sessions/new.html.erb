@@ -1,6 +1,8 @@
 Log In!
-<%= form_for @visitor do |f| %>
+<%= form_for @visitor, :url => login_path do |f| %>
     Username: <%= f.text_field :username %>
     Password: <%= f.password_field :password %>
     <%= f.submit "Log In" %>
+
+    #my action is not /login, it is /visitor
 <% end %>
