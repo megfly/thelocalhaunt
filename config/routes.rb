@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   #rootroute
   root to: 'application#home'
 
-  resources :visitors do 
-    resources :reviews 
-  end 
-  
+  #signup
+  get '/signup' => 'visitors#new'
+  post '/signup' => 'visitors#create'
+
+  resources :visitors 
   resources :reviews
   resources :properties
 

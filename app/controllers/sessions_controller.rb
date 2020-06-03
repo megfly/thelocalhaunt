@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
+    #logging in and logging out
 
     def new 
-        @visitor = Visitor.new 
+        @visitor = Visitor.new  
     end 
 
     def create 
@@ -18,5 +19,11 @@ class SessionsController < ApplicationController
 
     def destroy 
         session.delete :username
+    end 
+
+    private 
+
+    def visitor_params 
+        params.require(:visitor).permit(:username, :password)
     end 
 end
