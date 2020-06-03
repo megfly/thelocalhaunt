@@ -1,0 +1,32 @@
+New Haunting Review! <br><br><br>
+
+<%= form_for(@review) do |f| %>
+    <label>Review title:</label><br>
+    <%= f.text_field :title %><br>
+
+    <label>When did you visit this haunted location?</label><br>
+    <%= f.date_field :date %><br>
+
+    <label>What paranormal sights did you see?</label><br>
+    <%= f.text_field :sighting %><br>
+
+    <label>Did you hear any bumps in the night?</label><br>
+    <%= f.text_field :noise %><br>
+
+    <label>Did you experience any smells?</label><br>
+    <%= f.text_field :smell %><br>
+
+    <label>Were there any cold spots?</label><br>
+    <%= f.text_field :cold_spot %><br>
+
+    <label>Summary of events:</label><br>
+    <%= f.text_area_tag :summary %><br>
+
+    <label>Spookiness Rating:</label><br>
+    <%= f.number_field :rating %><br>
+
+    <%= f.submit %>
+<% end %>
+
+
+# t.integer "rating" gotta firgure this one out
