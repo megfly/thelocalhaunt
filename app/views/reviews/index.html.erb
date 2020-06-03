@@ -1,0 +1,11 @@
+<h1> Index Page For Spooky Reviews! </h1>
+
+    <% @reviews.each do |review| %>
+        <div>
+            <h2><%= review.title %></h2>
+
+            <h3> by: <%= link_to review.visitor.username, visitor_reviews_path(review.visitor) %></h3>
+            <p><%= review.summary %></p>
+
+        </div>
+    <% end %>
