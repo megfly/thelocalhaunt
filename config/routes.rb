@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   #rootroute
-  root to: 'application#home'
+  root to: 'sessions#home'
 
   resources :visitors 
   resources :reviews
