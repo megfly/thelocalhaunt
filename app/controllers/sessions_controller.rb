@@ -15,4 +15,8 @@ class SessionsController < ApplicationController
             #errors
         end
     end 
+
+    def destroy 
+        session.delete :username
+    end 
 end
