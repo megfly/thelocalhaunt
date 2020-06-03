@@ -5,4 +5,9 @@ class Property < ApplicationRecord
     validates :name, presence: true 
     validates :location, presence: true 
 
+    #logging in
+    get '/login', to: 'sessions#new'
+    post '/login', to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
+
 end
