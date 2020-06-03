@@ -8,7 +8,7 @@ class VisitorsController < ApplicationController
         @visitor = Visitor.new(visitor_params)
         if @visitor.save 
             session[:visitor_id] = @visitor.id 
-            redirect_to @visitor 
+            redirect_to @visitor #showpage
         else 
             render :new 
         end 
