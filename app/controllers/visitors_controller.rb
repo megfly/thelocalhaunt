@@ -15,6 +15,8 @@ class VisitorsController < ApplicationController
     end 
 
     def show 
+        @visitor = Visitor.find_by_id(params[:id])
+        redirect_to '/' if !@visitor
     end 
 
     private 

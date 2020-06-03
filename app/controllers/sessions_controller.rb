@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
     #logging in and logging out
 
+    def home 
+    end 
+
     def new 
         @visitor = Visitor.new  
     end 
@@ -18,7 +21,8 @@ class SessionsController < ApplicationController
     end 
 
     def destroy 
-        session.delete :username
+        session.clear
+        redirect_to root_path 
     end 
 
     private 
