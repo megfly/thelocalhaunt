@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+    #must be logged in maybe helper method before_action :redirect if not logged in
+
     def index 
         if params[:visitor_id]
             @reviews = Visitor.find(params[:visitor_id]).reviews
@@ -17,9 +19,10 @@ class ReviewsController < ApplicationController
     end 
 
     def create 
+        #should this be if else render new
         @review = Review.new(review_params)
         @review.save 
-        redirect_to review_path
+        redirect_to reviews_path
     end 
 
     def update 
