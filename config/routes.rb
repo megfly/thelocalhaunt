@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :visitors 
   resources :reviews
+
   resources :properties
+
 
   #signup
   get '/signup' => 'visitors#new'
