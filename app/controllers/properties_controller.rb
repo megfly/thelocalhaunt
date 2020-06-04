@@ -1,6 +1,10 @@
 class PropertiesController < ApplicationController
     #maybe look at hasmany through in forms lab
 
+    def index 
+        @properties = Property.all 
+    end 
+
     def new 
         @property = Property.new
     end 
@@ -14,8 +18,9 @@ class PropertiesController < ApplicationController
         end 
     end 
 
-    def index 
-        @properties = Property.all 
+    def show 
+        @property = Property.find(params[:id])
+        redirect_to properties_path
     end 
 
     def edit 
@@ -26,11 +31,6 @@ class PropertiesController < ApplicationController
         @property = Property.find(params[:id])
         @property.update(prop_params)
         redirect_to property_path
-    end 
-
-    def show 
-        @property = Property.find(params[:id])
-        redirect_to properties_path
     end 
 
     private 
