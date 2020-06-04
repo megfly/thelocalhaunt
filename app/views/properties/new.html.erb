@@ -1,16 +1,16 @@
 <h1>NEW GHOSTLY LOCATION</h1>
 
-<%= form_for property do |f| %>
+<%= form_for :property do |f| %>
 
-    <%= f.label "Property Name" %>
+    <%= f.label "Property Name:" %>
     <%= f.text_field :name %>
-
-    <%= f.label "Property Location" %>
+    <br><br><br>
+    <%= f.label "Property Location:" %>
     <%= f.text_field :location %>
-
-    <%= f.label "Haunted Happenings">
+    <br><br><br>
+    <%= f.label "Ghost Story:" %>
     <%= f.text_area :description %>
-
+    <br><br><br>
     <%= f.submit %>
 
 <% end %>
