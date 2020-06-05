@@ -1,1 +1,12 @@
-INMDEX
+<h1> ALL PROPERTIES </h1>
+
+<% @properties.each do |property| %>
+    <div>
+        <a href="/properties/<%= property.id %>"><%= property.name %></a>
+        <%= property.location %>
+        <%= property.description %>
+        <br><br><br>
+    </div>
+<% end %>
+
+
