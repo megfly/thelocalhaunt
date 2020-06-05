@@ -2,11 +2,9 @@
 
 <% @properties.each do |property| %>
     <div>
-        <a href="/properties/<%= property.id %>"><%= property.name %></a>
+        <%= link_to property.name, property_path(property) %>
         <%= property.location %>
         <%= property.description %>
         <br><br><br>
     </div>
 <% end %>
-
-
