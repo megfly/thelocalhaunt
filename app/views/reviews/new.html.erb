@@ -1,6 +1,7 @@
-New Haunting Review! <br><br><br>
 
-<%= form_for(@review) do |f| %>
+<h1>New Haunting Review </h1> 
+
+<%= form_for @review do |f| %>
     <label>Review title:</label><br>
     <%= f.text_field :title %><br>
 
@@ -25,8 +26,6 @@ New Haunting Review! <br><br><br>
     <label>Spookiness Rating 1-10:</label><br>
     <%= f.number_field :rating %><br>
 
+
     <%= f.submit %>
 <% end %>
-
-
-# t.integer "rating" gotta firgure this one out
