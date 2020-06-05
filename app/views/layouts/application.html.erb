@@ -10,9 +10,17 @@
   </head>
 
   <body>
+  <div>
   <%= link_to "Sign Up", signup_path %> 
   <%= link_to "Log In", login_path %> 
+  
   <%= link_to "Logout", logout_path, method:"delete" %>
+  </div>
+  <div>
+  <% if flash[:message] %>
+  <%= flash[:message] %>
+  <% end %>
+  </div>
 
     <%= yield %>
   </body>
