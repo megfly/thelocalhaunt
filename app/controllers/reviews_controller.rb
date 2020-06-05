@@ -3,22 +3,41 @@ class ReviewsController < ApplicationController
     #must be logged in maybe helper method before_action :redirect if not logged in
 
     def index 
-        if params[:visitor_id]
-            @reviews = Visitor.find(params[:visitor_id]).reviews
+        if params[:property_id] 
+            @property = Property.find_by_id(params[:property_id])
+            #nested
+            if @property 
+                @property.reviews 
+            else 
+                
+                @reviews = Review.all 
+            end 
         else 
-            @reviews = Review.all 
+            @reviews = Review.all
         end 
     end 
 
     def new 
+        #if nested and if we find post 
+        if params[:property_id]
+            @property = Property.find_by_id(params[:property_id])
+            if @property 
+                @property.reviews.build 
+            else 
+                @review = @property.reviews.build
+            end 
+        else 
         @review = Review.new 
+        end 
     end 
 
     def create 
-        #should this be if else render new
-        @review = Review.new(review_params)
-        @review.save 
-        redirect_to reviews_path
+        @review = current_user.reviews(review_params) #.build
+        if @review.save
+            redirect_to reviews_path 
+        else 
+            render :new 
+        end 
     end 
 
     def show 
