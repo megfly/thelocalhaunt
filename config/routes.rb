@@ -3,12 +3,6 @@ Rails.application.routes.draw do
   #rootroute
   root to: 'sessions#home'
 
-  resources :visitors 
-  resources :reviews
-
-  resources :properties
-
-
   #signup
   get '/signup' => 'visitors#new'
   post '/signup' => 'visitors#create'
@@ -18,5 +12,19 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  resources :reviews
+  resources :visitors do  #visitors/1/properties
+    resources :properties, only: [:new, :create, :index ]
+  end 
+  resources :properties do #properties/1/reviews
+    resources :reviews , only: [:new, :create, :index ]
+  end 
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
+
+
+ #properties/:property_id/reviews 
+ #properties/:property_id/reviews/new
+ #properties/property_id/reviews/5
