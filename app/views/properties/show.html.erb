@@ -1,6 +1,14 @@
-PROPERTY SHOW PAGE
+<h1>PROPERTY SHOW PAGE</h1>
 
-<h1><%= @property.title %></h1>
+<h2><%= @property.name %></h2>
+<h2><%= @property.location %></h2>
+<h2><%= @property.description %></h2>
 
-<%= link_to "Add a Haunting Review", new_review_path %>
-<%= link_to "All Spooky Reviews", reviews_path %>
+<h3>Reviews:</h3>
+<% @property.reviews.each do |p| %>
+    <strong> <%= link_to p.title, review_path(@review,p) %> </strong>
+<% end %>
+
+<%= link_to "Add a Haunting Review", new_property_review_path(@property) %>
+
+<%= link_to "See All Reviews", property_reviews_path(@property) %>
