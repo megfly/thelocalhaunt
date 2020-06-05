@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-    #maybe look at hasmany through in forms lab
+    #maybe look at hasmany through in forms lab maybe before action to make sure user logged in?
 
     def index 
         @properties = Property.all 
@@ -10,7 +10,7 @@ class PropertiesController < ApplicationController
     end 
 
     def create 
-        @property = Property.new(prop_params) #HAAAAAALP
+        @property = Property.new(prop_params) #HAAAAAALP should i put current user in here???
         if @property.valid?
             @property.save 
             redirect_to @property
@@ -21,7 +21,7 @@ class PropertiesController < ApplicationController
 
     def show 
         @property = Property.find(params[:id])
-        redirect_to property_path
+        #redirect_to property_path
     end 
 
     def edit 
