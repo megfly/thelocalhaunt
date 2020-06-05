@@ -10,10 +10,6 @@ class ReviewsController < ApplicationController
         end 
     end 
 
-    def show 
-        @review = Review.find(params[:id])
-    end 
-
     def new 
         @review = Review.new 
     end 
@@ -23,6 +19,10 @@ class ReviewsController < ApplicationController
         @review = Review.new(review_params)
         @review.save 
         redirect_to reviews_path
+    end 
+
+    def show 
+        @review = Review.find(params[:id])
     end 
 
     def update 
