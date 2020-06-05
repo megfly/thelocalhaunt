@@ -11,7 +11,8 @@ class PropertiesController < ApplicationController
 
     def create 
         @property = Property.new(prop_params) #HAAAAAALP
-        if @property.save 
+        if @property.valid?
+            @property.save 
             redirect_to @property
         else 
             render :new
@@ -20,7 +21,7 @@ class PropertiesController < ApplicationController
 
     def show 
         @property = Property.find(params[:id])
-        redirect_to properties_path
+        redirect_to property_path
     end 
 
     def edit 
