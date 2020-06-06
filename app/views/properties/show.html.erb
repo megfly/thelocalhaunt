@@ -4,11 +4,24 @@
 <h2><%= @property.location %></h2>
 <h2><%= @property.description %></h2>
 
-<h3>Reviews:</h3>
+<h1>Reviews:</h1>
 <% @property.reviews.each do |p| %>
-    <strong> <%= link_to p.title, review_path(@review,p) %> </strong>
+    <%= link_to "#{p.title}", review_path %> <br>
 <% end %>
 
-<%= link_to "Add a Haunting Review", new_property_review_path(@property) %>
+<br><br><br>
 
-<%= link_to "See All Reviews", property_reviews_path(@property) %>
+<%= link_to "Add a Haunting Review", new_property_review_path(@property) %>   
+<br>
+<%= link_to "Go Back to All Properties", properties_path %>
+
+
+<%= form_for @property do |f| %>
+    <% if @property.errors.any? %>
+    <ul>
+      <% @property.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
+<% end %>
