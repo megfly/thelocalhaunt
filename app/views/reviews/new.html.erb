@@ -2,6 +2,10 @@
 <h1>New Haunting Review </h1> 
 
 <%= form_for @review do |f| %>
+
+    <%= f.hidden_field :property_id %>
+    <%= f.hidden_field :visitor_id %>
+
     <label>Review title:</label><br>
     <%= f.text_field :title %><br>
 
@@ -26,6 +30,15 @@
     <label>Spookiness Rating 1-10:</label><br>
     <%= f.number_field :rating %><br>
 
-
     <%= f.submit %>
+<% end %>
+
+<%= form_for @review do |f| %>
+    <% if @review.errors.any? %>
+    <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
 <% end %>
