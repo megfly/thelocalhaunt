@@ -5,6 +5,7 @@
 <h2><%= @property.description %></h2>
 
 <h1>Reviews:</h1>
+#maybe I should do by highest reviews here in descending order
 <% @property.reviews.each do |p| %>
     <%= link_to "#{p.title}", review_path %> <br>
 <% end %>

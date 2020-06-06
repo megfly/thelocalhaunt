@@ -56,6 +56,10 @@ class ReviewsController < ApplicationController
     def edit 
     end 
 
+    def Review.ordered_rating
+        @spookiest_places = Review.ordered_rating
+    end 
+
     private 
 
     def review_params 

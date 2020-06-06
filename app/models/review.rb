@@ -4,4 +4,7 @@ class Review < ApplicationRecord
     belongs_to :property #each review associated with on property, now we have @review.property
 
     validates :title, presence: true 
+
+    scope :ordered_rating, -> { order(rating: 'desc') }
+
 end
