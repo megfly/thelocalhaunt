@@ -14,10 +14,10 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :visitors do  #visitors/1/properties
-    resources :properties, only: [:new, :create, :index ]
+    resources :properties
   end 
   resources :properties do #properties/1/reviews
-    resources :reviews , only: [:new, :create, :index ]
+    resources :reviews
   end 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
