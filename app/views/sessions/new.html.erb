@@ -1,5 +1,7 @@
 <h1> LogIn </h1>
 
+<%= render partial: "layouts/errors", locals: {object: @visitor} %>
+
 <%= form_for :visitor do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %>

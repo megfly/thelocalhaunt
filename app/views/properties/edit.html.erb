@@ -1,5 +1,7 @@
 <h1>EDIT GHOSTLY LOCATION</h1>
 
+<%= render partial: "layouts/errors", locals: {object: @property} %>
+
 <%= form_for @property do |f| %>
 
     <%= f.label "Property Name" %>
