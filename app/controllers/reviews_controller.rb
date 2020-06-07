@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
             @property = Property.find_by_id(params[:property_id])
             #nested
             if @property 
-                @property.reviews 
+                @property.reviews
             else 
                 
                 @reviews = Review.all 
@@ -54,10 +54,6 @@ class ReviewsController < ApplicationController
     end 
 
     def edit 
-    end 
-
-    def Review.ordered_rating
-        @spookiest_places = Review.ordered_rating
     end 
 
     private 
