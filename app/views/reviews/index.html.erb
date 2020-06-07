@@ -1,7 +1,11 @@
 <h1> Index Page For Spooky Reviews! </h1>
 
-<% @property.reviews.each do |rev| %>
-    <%= rev.title %> <%= link_to rev.property.title, property_path(rev.property_id) %>
+<% @reviews.most_recent_review.each do |rev| %>
+    <%= link_to rev.title, review_path(rev.id) %> <br>
 <% end %>
 
-#go back to all properties button?
+<br><br>
+<%= link_to "Go Back to All Properties", properties_path %>
+<br>
+<%= link_to "Go To All Property Reviews", reviews_path %>
+<br>
