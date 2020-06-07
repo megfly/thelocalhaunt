@@ -8,7 +8,9 @@
 <h3><%= "On a scale between 1-10, how scary was this place?" %> <%= @review.rating %> </h3>
 <h3><%= "property id testing" %><%= @review.property_id %></h3>
 <h3><%= "visitor id testing" %><%= @review.visitor_id %></h3>
-
+<br>
 #edit if current user?
 <%= link_to "Go Back to All Properties", properties_path %>
+<br>
+<%= link_to "Go To All Property Reviews", reviews_path %>
 <br>
