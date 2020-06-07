@@ -1,28 +1,23 @@
 <h1>PROPERTY SHOW PAGE</h1>
 
+<%= render partial: "layouts/errors", locals: {object: @property} %>
+
 <h2><%= @property.name %></h2>
 <h2><%= @property.location %></h2>
 <h2><%= @property.description %></h2>
 
-<h1>Reviews:</h1>
-#maybe I should do by highest reviews here in descending order
-<% @property.reviews.each do |p| %>
-    <%= link_to "#{p.title}", review_path %> <br>
+<h1> <%= @property.name %> Reviews:</h1>
+
+<% @property.reviews.ordered_rating.each do |p| %>
+    <%= link_to "#{p.title}", property_review_path(p.id) %> <br>
 <% end %>
 
 <br><br><br>
 
+<br><div>
 <%= link_to "Add a Haunting Review", new_property_review_path(@property) %>   
 <br>
 <%= link_to "Go Back to All Properties", properties_path %>
-
-
-<%= form_for @property do |f| %>
-    <% if @property.errors.any? %>
-    <ul>
-      <% @property.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-    <% end %>
-<% end %>
+<br>
+<%= link_to "Go To All Property Reviews", reviews_path %>
+<br></div>
