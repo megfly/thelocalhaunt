@@ -21,6 +21,14 @@ class SessionsController < ApplicationController
         end
     end 
 
+    def omniauth
+        #want to see the attributes for users auth but it wont work
+        @visitor = Visitor.from_omniauth(auth)
+        @visitor.save 
+        session[:visitor_id] = @visitor.id 
+        redirect_to visitor_path(@visitor)
+      end
+
     def destroy 
         session.clear
         redirect_to root_path 
@@ -31,4 +39,9 @@ class SessionsController < ApplicationController
     def visitor_params 
         params.require(:visitor).permit(:username, :password)
     end 
+
+    def auth
+        request.env['omniauth.auth']
+    end
+
 end

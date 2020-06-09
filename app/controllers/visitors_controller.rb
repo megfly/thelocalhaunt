@@ -24,6 +24,6 @@ class VisitorsController < ApplicationController
     private 
 
     def visitor_params 
-        params.require(:visitor).permit(:username, :password)
+        params.require(:visitor).permit(:username, :password, :email)
     end 
 end
