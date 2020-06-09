@@ -1,12 +1,14 @@
 <h1> ALL PROPERTIES </h1>
 
-<%= render partial: "layouts/errors", locals: {object: @property} %>
+
 
 <% @properties.each do |property| %>
     <div>
         <%= link_to property.name, property_path(property) %>
         <%= property.location %>
-        <%= property.description %>
+        <%= property.description %><br><br>
         <br><br><br>
     </div>
 <% end %>
+
+<%= link_to "Add a Spooky Location", new_property_path %>
