@@ -1,6 +1,6 @@
 <h1> Index Page For Spooky Reviews! </h1>
 
-<%= render partial: "layouts/errors", locals: {object: @review} %>
+
 
 <% @reviews.most_recent_review.each do |rev| %>
     <%= link_to rev.title, review_path(rev.id) %> <br>
