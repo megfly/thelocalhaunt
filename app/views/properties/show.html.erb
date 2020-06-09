@@ -1,23 +1,27 @@
-<h1>PROPERTY SHOW PAGE</h1>
-
 <%= render partial: "layouts/errors", locals: {object: @property} %>
 
-<h2><%= @property.name %></h2>
-<h2><%= @property.location %></h2>
-<h2><%= @property.description %></h2>
+<div id="app">
 
-<h1> <%= @property.name %> Reviews:</h1>
+<h2><%= @property.name %></h2>
+<h3><%= @property.location %></h3>
+<h3><%= @property.description %></h3>
+
+
+<br>
+<br>
+
+<h4> Frightening <%= @property.name %> Reviews:</h4>
 
 <% @property.reviews.ordered_rating.each do |p| %>
-    <%= link_to "#{p.title}", property_review_path(p.id) %> <br>
+    <%= link_to "#{p.title}", property_review_path(p.id) %>
 <% end %>
 
 <br><br><br>
 
-<br><div>
-<%= link_to "Add a Haunting Review", new_property_review_path(@property) %>   
-<br>
-<%= link_to "Go Back to All Properties", properties_path %>
-<br>
-<%= link_to "Go To All Property Reviews", reviews_path %>
+<div id="wrapper">
+<%= link_to "Add a Review for #{@property.name}", new_property_review_path(@property) %> |
+<%= link_to "Go To All Reviews", reviews_path %>
 <br></div>
+
+
+</div>

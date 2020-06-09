@@ -1,9 +1,15 @@
-<h1> Welcome <%= @visitor.username %> </h1>
-
 <%= render partial: "layouts/errors", locals: {object: @visitor} %>
 
-<%= link_to "Add a Spooky Location", new_property_path %>
-<%= link_to "All Spooky Locations", properties_path %>
+<div id="app">
+    
+<h1> Welcome Back <%= @visitor.username %> </h1>
+
+<div id="wrapper">
+<%= link_to "Add a Spooky Location", new_property_path %> |
+<%= link_to "See All Haunted Reviews", reviews_path %>
+</div>
+
+</div>
 
 
 

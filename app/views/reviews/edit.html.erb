@@ -1,6 +1,12 @@
-EDIT your Haunting Review! <br><br><br>
-
 <%= render partial: "layouts/errors", locals: {object: @review} %>
+
+<div id="app">
+
+    <div id="wrapper">
+
+<div class="container">
+    <fieldset>
+        <legend>Edit Your Review</legend>
 
 <%= form_for(@review) do |f| %>
     <label>Review title:</label><br>
@@ -29,6 +35,11 @@ EDIT your Haunting Review! <br><br><br>
 
     <%= f.submit %>
 <% end %>
+
+</fieldset>
+</div>
+</div>
+</div>
 
 
 # t.integer "rating" gotta firgure this one out

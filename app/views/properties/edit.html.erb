@@ -1,6 +1,12 @@
-<h1>EDIT GHOSTLY LOCATION</h1>
-
 <%= render partial: "layouts/errors", locals: {object: @property} %>
+
+<div id="app">
+
+    <div id="wrapper">
+
+<div class="container">
+    <fieldset>
+        <legend>Edit Your Property</legend>
 
 <%= form_for @property do |f| %>
 
@@ -16,3 +22,8 @@
     <%= f.submit %>
 
 <% end %>
+
+</fieldset>
+</div>
+</div>
+</div>

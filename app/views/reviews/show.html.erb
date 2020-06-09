@@ -1,17 +1,27 @@
 <%= render partial: "layouts/errors", locals: {object: @review} %>
 
-<h2><%= "Review Title:" %><%= @review.title %></h2>
-<h3><%= "Date of Visit:" %><%= @review.date %></h3>
-<h3><%= "Paranormal Sights?" %><%= @review.sighting %></h3>
-<h3><%= "Any ghastly noises?" %><%= @review.noise %></h3>
-<h3><%= "Any frightening smells?" %><%= @review.smell %></h3>
-<h3><%= "Cold spots?" %><%= @review.cold_spot %></h3>
-<h3><%= "Spooky Summary:" %> <%= @review.summary %></h3>
-<h3><%= "On a scale between 1-10, how scary was this place?" %> <%= @review.rating %> </h3>
+<div id="app">
 
-<br>
+<div id="wrapper">
+<div class="container">
+<%= "Review Title: " %><%= @review.title %><br>
+<%= "Date of Visit: " %><%= @review.date %><br>
+<%= "Paranormal Sights? " %><%= @review.sighting %><br>
+<%= "Any ghastly noises? " %><%= @review.noise %><br>
+<%= "Any frightening smells? " %><%= @review.smell %><br>
+<%= "Cold spots?" %><%= @review.cold_spot %><br>
+<%= "Spooky Summary:" %> <%= @review.summary %><br>
+<%= "How scary was this experience (1-10)? " %> <%= @review.rating %><br>
+</div>
+</div>
+
+<br><br><br><br>
 #edit if current user?
-<%= link_to "Go Back to All Properties", properties_path %>
 <br>
-<%= link_to "Go To All Property Reviews", reviews_path %>
-<br>
+
+<div id="wrapper">
+<%= link_to "Go to All Properties", properties_path %> |
+<%= link_to "Go To All Reviews", reviews_path %>
+</div>
+
+</div>

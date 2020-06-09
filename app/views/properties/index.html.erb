@@ -1,14 +1,17 @@
-<h1> ALL PROPERTIES </h1>
+<div id="app">
 
-
+<h1> All Haunted Properties </h1>
 
 <% @properties.each do |property| %>
-    <div>
         <%= link_to property.name, property_path(property) %>
-        <%= property.location %>
-        <%= property.description %><br><br>
-        <br><br><br>
-    </div>
+        <%= property.location %><br><br>
 <% end %>
 
+
+<br><br><br><br><br>
+
+<div id="wrapper">
 <%= link_to "Add a Spooky Location", new_property_path %>
+<div>
+
+</div>
