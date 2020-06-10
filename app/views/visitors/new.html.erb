@@ -8,7 +8,7 @@
             <fieldset>
                 <legend>Sign Up!</legend>
 
-  <%= form_for(@visitor, url:'/signup') do |f| %>
+<%= form_for :visitor do |f| %>
     <label>Username: </label>
     <%= f.text_field :username %>
     <br>

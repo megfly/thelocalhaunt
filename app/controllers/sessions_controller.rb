@@ -9,11 +9,11 @@ class SessionsController < ApplicationController
     end 
 
     def create 
-        @visitor = Visitor.find_by(username: params[:visitor][:username]) #params coming from loginform. inspect page to see.
-        if @visitor && @visitor.authenticate(params[:password])
-            #logging in 
-            session[:visitor_id] = @visitor.id 
-            redirect_to visitor_path(@visitor) #show page 
+        @visitor = Visitor.find_by(username: params[:visitor][:username]) #params coming from loginform.
+       
+        if @visitor && @visitor.authenticate(params[:visitor][:password])
+             session[:visitor_id] = visitor.id  #save the user id inside the browser cookie and log in
+             redirect_to visitor_path(@visitor) #show page 
         else 
             flash[:error] = "Invalid password. Please try again."
             redirect_to '/login'
@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
     private 
 
     def visitor_params 
-        params.require(:visitor).permit(:username, :password)
+        params.require(:visitor).permit(:username, :password, :email)
     end 
 
     def auth
