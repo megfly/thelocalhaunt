@@ -8,10 +8,10 @@ class VisitorsController < ApplicationController
         @visitor = Visitor.new(visitor_params)
         if @visitor.save 
             session[:visitor_id] = @visitor.id 
-            flash[:message] = "Your account has been created!"
+            flash[:success] = "Your account has been created!"
             redirect_to @visitor #showpage
         else 
-            flash[:message] = "Please try again"
+            flash[:username] = "Username already taken. Please try again."
             redirect_to '/signup'
         end 
     end 
