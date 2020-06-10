@@ -9,14 +9,13 @@ class SessionsController < ApplicationController
     end 
 
     def create 
-        @visitor = Visitor.find_by(username: params[:visitor][:username]) #params coming from loginform. inspect page to see
-        if params[:username] !="" && params[:password] != ""
-            @visitor.authenticate(params[:password])
+        @visitor = Visitor.find_by(username: params[:visitor][:username]) #params coming from loginform. inspect page to see.
+        if @visitor && @visitor.authenticate(params[:password])
             #logging in 
             session[:visitor_id] = @visitor.id 
             redirect_to visitor_path(@visitor) #show page 
         else 
-            flash[:message] = "Invalid"
+            flash[:error] = "Invalid password. Please try again."
             redirect_to '/login'
         end
     end 
