@@ -4,15 +4,11 @@ class SessionsController < ApplicationController
     def home 
     end 
 
-    def new 
-        @visitor = Visitor.new  
-    end 
-
     def create 
-        @visitor = Visitor.find_by(username: params[:visitor][:username]) #params coming from loginform.
-       
-        if @visitor && @visitor.authenticate(params[:visitor][:password])
-             session[:visitor_id] = visitor.id  #save the user id inside the browser cookie and log in
+        @visitor = Visitor.find_by(username: params[:session][:username]) #params coming from loginform.
+      
+        if @visitor && @visitor.authenticate(params[:session][:password])
+             session[:visitor_id] = @visitor.id  #save the user id inside the browser cookie and log in
              redirect_to visitor_path(@visitor) #show page 
         else 
             flash[:error] = "Invalid password. Please try again."
@@ -34,10 +30,6 @@ class SessionsController < ApplicationController
     end 
 
     private 
-
-    def visitor_params 
-        params.require(:visitor).permit(:username, :password, :email)
-    end 
 
     def auth
         request.env['omniauth.auth']

@@ -17,8 +17,7 @@ class VisitorsController < ApplicationController
     end 
 
     def show 
-        check_for_logged_in
-        @visitor = Visitor.find_by_id(params[:visitor_id])
+        @visitor = Visitor.find_by(params[:id])
         redirect_to '/' if !@visitor
     end 
 

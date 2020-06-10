@@ -1,6 +1,4 @@
 class ReviewsController < ApplicationController
-    require 'pry'
-
     #must be logged in maybe helper method before_action :redirect if not logged in
     before_action :check_for_logged_in
 
@@ -45,7 +43,7 @@ class ReviewsController < ApplicationController
     end 
 
     def update 
-        @review = Review.find(params[:id])
+        @review = Review.find_by_id(params[:id])
         if current_user
             @review.update(review_params)
             redirect_to review_path(@review)
