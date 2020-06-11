@@ -1,24 +1,25 @@
 <%= render partial: "layouts/errors", locals: {object: @property} %>
 
 <div id="app">
+<%= flash[:message] %>
 
     <div id="wrapper">
 
 <div class="container">
     <fieldset>
-        <legend>Edit Your Property</legend>
+        <legend>Edit <%= @property.name %></legend>
 
 <%= form_for @property do |f| %>
 
-    <%= f.label "Property Name" %>
+    <%= f.label "Property Name:" %>
     <%= f.text_field :name %>
-
-    <%= f.label "Property Location" %>
+    <br>
+    <%= f.label "Property Location:" %>
     <%= f.text_field :location %>
-
-    <%= f.label "Haunted Happenings">
+    <br><br>
+    <%= f.label "Ghost Story:" %>
     <%= f.text_area :description %>
-
+    <br>
     <%= f.submit %>
 
 <% end %>
