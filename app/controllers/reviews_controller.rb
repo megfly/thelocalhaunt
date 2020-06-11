@@ -1,28 +1,23 @@
 class ReviewsController < ApplicationController
     #must be logged in maybe helper method before_action :redirect if not logged in
-    before_action :check_for_logged_in
-
+    
     def index 
-        if params[:property_id] 
-            @property = Property.find_by_id(params[:property_id])
-            #nested
-            if @property 
-                @property.reviews
-            else 
-                
-                @reviews = Review.all 
-            end 
+        if logged_in?
+            @reviews = Review.all 
         else 
-            @reviews = Review.all
+            flash[:message] = "You must be logged in to view property reviews"
+            redirect_to root_path
         end 
     end 
 
     def new 
         # #if nested and if we find post 
-        if params[:property_id] && @property = Property.find_by_id(params[:property_id])
+        if logged_in?
+            params[:property_id] && @property = Property.find_by_id(params[:property_id])
             @review = @property.reviews.build
         else 
-            @review = Review.new
+            flash[:message] = "Must be logged in to add a review"
+            redirect_to root_path  
         end 
     end 
 
@@ -42,17 +37,24 @@ class ReviewsController < ApplicationController
         @review = Review.find_by_id(params[:id])
     end 
 
-    def update 
-        @review = Review.find_by_id(params[:id])
-        if current_user
-            @review.update(review_params)
-            redirect_to review_path(@review)
+    def edit 
+        if current_user 
+            @review = Review.find_by_id(params[:id]) 
         else 
-            render :edit 
+            flash[:message] = "You must be logged in to edit review"
+            redirect_to reviews_path
         end 
     end 
 
-    def edit 
+    def update 
+        if current_user 
+            @review = Review.find_by_id(params[:id])
+            @review.update(review_params)
+            redirect_to review_path(@review) 
+        else 
+            flash[:message] = "You must be logged in to edit review"
+            redirect_to reviews_path
+        end 
     end 
 
     private 
@@ -60,4 +62,5 @@ class ReviewsController < ApplicationController
     def review_params 
         params.require(:review).permit(:title, :sighting, :noise, :smell, :cold_spot, :summary, :date, :rating, :property_id, :visitor_id)
     end 
+
 end
