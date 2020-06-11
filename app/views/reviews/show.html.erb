@@ -1,4 +1,3 @@
-<%= render partial: "layouts/errors", locals: {object: @review} %>
 
 <div id="app">
 
@@ -16,12 +15,13 @@
 </div>
 
 <br><br><br><br>
-#edit if current user?
+
 <br>
 
 <div id="wrapper">
-<%= link_to "Go to All Properties", properties_path %> |
-<%= link_to "Go To All Reviews", reviews_path %>
+<% if @review.visitor == current_user %>
+<%= link_to "Edit Review", edit_property_review_path(@review) %> 
+<% end %>
 </div>
 
 </div>
