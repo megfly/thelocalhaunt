@@ -17,8 +17,11 @@ class VisitorsController < ApplicationController
     end 
 
     def show 
-        @visitor = Visitor.find_by(params[:id])
-        redirect_to '/' if !@visitor
+        @visitor = Visitor.find_by_id(params[:id])
+        unless @visitor 
+            flash[:error] = "User not found"
+            redirect_to '/login'
+        end 
     end 
 
     private 
