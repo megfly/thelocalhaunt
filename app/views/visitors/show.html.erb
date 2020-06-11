@@ -1,7 +1,7 @@
-<%= render partial: "layouts/errors", locals: {object: @visitor} %>
-
 <div id="app">
-    
+
+<%= flash[:error] %>
+
 <h1> Welcome Back <%= @visitor.username %> </h1>
 
 <div id="wrapper">
