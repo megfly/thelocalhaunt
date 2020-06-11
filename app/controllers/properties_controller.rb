@@ -1,12 +1,16 @@
 class PropertiesController < ApplicationController
-    #maybe look at hasmany through in forms lab maybe before action to make sure user logged in?
 
     def index 
         @properties = Property.all 
     end 
 
     def new 
-        @property = Property.new
+        if logged_in? 
+            @property = Property.new
+        else 
+            flash[:message] = "Must be logged in to edit property"
+            redirect_to root_path 
+        end 
     end 
 
     def create 
@@ -25,13 +29,22 @@ class PropertiesController < ApplicationController
     end 
 
     def edit 
-        @property = Property.find_by_id(params[:id])
+        if current_user
+            @property = Property.find_by_id(params[:id])
+        else 
+            flash[:message] = "Must be logged in to edit property"
+            redirect_to root_path
+        end 
     end 
 
     def update 
-        @property = Property.find(params[:id])
-        @property.update(prop_params)
-        redirect_to property_path
+        if current_user
+            @property = Property.find_by_id(params[:id])
+            @property.update(prop_params)
+            redirect_to property_path
+        else 
+            redirect_to @property
+        end 
     end 
 
     private 
