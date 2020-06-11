@@ -20,8 +20,10 @@
 
 <div id="wrapper">
 <%= link_to "Add a Review for #{@property.name}", new_property_review_path(@property) %> |
-<%= link_to "Go To All Reviews", reviews_path %>
+<% if @visitor == current_user %>
+<%= link_to "Edit Property", edit_property_path(@property) %>
+<% end %>
 <br></div>
 
-
 </div>
+
