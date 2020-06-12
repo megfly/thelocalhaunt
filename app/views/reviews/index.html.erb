@@ -1,16 +1,14 @@
 <div id="app">
 
-<%= flash[:message] %>
+    <%= flash[:message] %>
 
-<h1> All Haunted Reviews! </h1>
-
-<% @reviews.most_recent_review.each do |rev| %>
-    <%= link_to rev.title, review_path(rev.id) %> 
-    reviewed on <%= rev.date %>
-    <br>  
-    by <%= rev.visitor.username %>  <br><br>
-<% end %>
-
-<br><br><br><br><br><br><br><br>
-
+        <h1> All Haunted Reviews! </h1>
+            <% @reviews.most_recent_review.each do |rev| %>
+                <%= link_to rev.title, review_path(rev.id) %> 
+                reviewed on <%= rev.date %>
+                <br>  
+                by <%= rev.visitor.username %>  <br><br>
+            <% end %>
+            
+            <br><br><br><br><br><br><br><br>
 </div>
