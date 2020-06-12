@@ -1,23 +1,21 @@
 class ReviewsController < ApplicationController
-    #must be logged in maybe helper method before_action :redirect if not logged in
+    #maybe helper method before_action :redirect if not logged in
     
     def index 
         if logged_in?
             @reviews = Review.all 
         else 
-            flash[:message] = "You must be logged in to view property reviews"
-            redirect_to root_path
+            redirect_if_not_logged_in 
         end 
     end 
 
     def new 
-        # #if nested and if we find post 
+        #nested new route 
         if logged_in?
             params[:property_id] && @property = Property.find_by_id(params[:property_id])
             @review = @property.reviews.build
         else 
-            flash[:message] = "Must be logged in to add a review"
-            redirect_to root_path  
+            redirect_if_not_logged_in 
         end 
     end 
 
@@ -34,26 +32,24 @@ class ReviewsController < ApplicationController
     end 
 
     def show 
-        @review = Review.find_by_id(params[:id])
+        find_review
     end 
 
     def edit 
         if current_user 
-            @review = Review.find_by_id(params[:id]) 
+            find_review
         else 
-            flash[:message] = "You must be logged in to edit review"
-            redirect_to reviews_path
+            redirect_if_not_logged_in 
         end 
     end 
 
     def update 
         if current_user 
-            @review = Review.find_by_id(params[:id])
+            find_review
             @review.update(review_params)
             redirect_to review_path(@review) 
         else 
-            flash[:message] = "You must be logged in to edit review"
-            redirect_to reviews_path
+            redirect_if_not_logged_in 
         end 
     end 
 
@@ -61,6 +57,10 @@ class ReviewsController < ApplicationController
 
     def review_params 
         params.require(:review).permit(:title, :sighting, :noise, :smell, :cold_spot, :summary, :date, :rating, :property_id, :visitor_id)
+    end 
+
+    def find_review 
+        @review = Review.find_by_id(params[:id])
     end 
 
 end
