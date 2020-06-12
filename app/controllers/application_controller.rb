@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
 
-
     helper_method :current_user #access to views
 
     private 
@@ -17,6 +16,10 @@ class ApplicationController < ActionController::Base
 
     def check_for_logged_in
         redirect_to '/' if !logged_in?
-      end
+    end
 
+    def redirect_if_not_logged_in 
+        flash[:message] = "Must be logged in to perform this action"
+        redirect_to root_path 
+    end 
 end 
