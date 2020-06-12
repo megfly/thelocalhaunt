@@ -7,8 +7,4 @@ class Review < ApplicationRecord
 
     scope :ordered_rating, -> { order(rating: :desc) }
     scope :most_recent_review, -> { order(date: :desc) }
-    #ex scope :long_titles, -> { where("LENGTH(title) > 30") } gives speciufic query a name, go back to controller  
-    #controller def index @books = Book.long_ttiles end 
-    #go to console and do Book.long_titles
-    
 end
