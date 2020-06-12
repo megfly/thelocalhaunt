@@ -1,0 +1,12 @@
+<%= form_for @property do |f| %>
+    <%= f.label "Property Name:" %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label "Property Location:" %>
+    <%= f.text_field :location %>
+    <br><br>
+    <%= f.label "Ghost Story:" %>
+    <%= f.text_area :description %>
+    <br>
+    <%= f.submit %>
+<% end %>
