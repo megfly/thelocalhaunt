@@ -1,29 +1,21 @@
 <%= render partial: "layouts/errors", locals: {object: @property} %>
 
 <div id="app">
-
-<h2><%= @property.name %></h2>
-<h3><%= @property.location %></h3>
-<h3><%= @property.description %></h3>
-
-
-<br>
-<br>
-
-<h4> Frightening <%= @property.name %> Reviews:</h4>
-
-<% @property.reviews.ordered_rating.each do |p| %>
-    <%= link_to "#{p.title}", property_review_path(p.id) %>
-<% end %>
-
-<br><br><br>
-
-<div id="wrapper">
-<%= link_to "Add a Review for #{@property.name}", new_property_review_path(@property) %> |
-<% if @visitor == current_user %>
-<%= link_to "Edit Property", edit_property_path(@property) %>
-<% end %>
-<br></div>
-
+    <h3><%= @property.name %></h3>
+    <h4><%= @property.location %></h4>
+    <h4><%= @property.description %></h4>
+        <br>
+            <br>
+        <h4> Frightening <%= @property.name %> Reviews:</h4>
+            <% @property.reviews.ordered_rating.each do |r| %>
+                <%= link_to "#{r.title}", property_review_path(@property, r) %> 
+                Spookiness rating of <%= "#{r.rating}" %><br><br>
+            <% end %>
+            <br><br><br>
+                <div id="wrapper">
+                    | <%= link_to "Add a Review for #{@property.name}", new_property_review_path(@property) %> |
+                    <%= link_to "Edit Property", edit_property_path(@property) %> |
+                <br>
+                </div>
 </div>
 
