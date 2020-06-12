@@ -8,13 +8,12 @@ class PropertiesController < ApplicationController
         if logged_in? 
             @property = Property.new
         else 
-            flash[:message] = "Must be logged in to edit property"
-            redirect_to root_path 
+            redirect_if_not_logged_in 
         end 
     end 
 
     def create 
-        @property = Property.new(prop_params) #HAAAAAALP should i put current user in here???
+        @property = Property.new(prop_params)
         if @property.valid?
             @property.save 
             redirect_to @property
@@ -24,22 +23,20 @@ class PropertiesController < ApplicationController
     end 
 
     def show 
-        @property = Property.find(params[:id])
-        #redirect_to property_path
+        find_property
     end 
 
     def edit 
-        if current_user
-            @property = Property.find_by_id(params[:id])
+        if logged_in?
+            find_property
         else 
-            flash[:message] = "Must be logged in to edit property"
-            redirect_to root_path
+            redirect_if_not_logged_in 
         end 
     end 
 
     def update 
-        if current_user
-            @property = Property.find_by_id(params[:id])
+        if logged_in?
+            find_property
             @property.update(prop_params)
             redirect_to property_path
         else 
@@ -51,5 +48,9 @@ class PropertiesController < ApplicationController
 
     def prop_params 
         params.require(:property).permit(:name, :location, :description)
+    end 
+
+    def find_property
+        @property = Property.find_by_id(params[:id])
     end 
 end
