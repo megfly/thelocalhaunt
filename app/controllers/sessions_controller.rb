@@ -22,7 +22,6 @@ class SessionsController < ApplicationController
     end 
 
     def omniauth
-        #want to see the attributes for users auth but it wont work
         @visitor = Visitor.from_omniauth(auth)
         @visitor.save 
         session[:visitor_id] = @visitor.id 
