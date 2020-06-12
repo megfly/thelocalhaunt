@@ -1,20 +1,18 @@
 <div id="app">
     <div id="wrapper">
-    
-<div class="container">
-    <fieldset>
-        <legend>Login!</legend>
-
-<%= form_for :visitor do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-    <br>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <br>
-    <%= f.submit "Log In" %>
-<% end %>
-
-</fieldset>
-</div>
+        <div class="container">
+            <fieldset>
+                <legend>Login!</legend>
+                    <%= form_for :visitor do |f| %>
+                        <%= f.label :username %>
+                        <%= f.text_field :username %>
+                        <br>
+                        <%= f.label :password %>
+                        <%= f.password_field :password %>
+                        <br>
+                        <%= f.submit "Log In" %>
+                    <% end %>
+            </fieldset>
+        </div>
+    </div>
 </div>
