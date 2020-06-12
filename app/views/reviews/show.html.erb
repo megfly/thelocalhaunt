@@ -1,27 +1,20 @@
-
 <div id="app">
-
-<div id="wrapper">
-<div class="container">
-<%= "Review Title: " %><%= @review.title %><br>
-<%= "Date of Visit: " %><%= @review.date %><br>
-<%= "Paranormal Sights? " %><%= @review.sighting %><br>
-<%= "Any ghastly noises? " %><%= @review.noise %><br>
-<%= "Any frightening smells? " %><%= @review.smell %><br>
-<%= "Cold spots?" %><%= @review.cold_spot %><br>
-<%= "Spooky Summary:" %> <%= @review.summary %><br>
-<%= "How scary was this experience (1-10)? " %> <%= @review.rating %><br>
-</div>
-</div>
-
-<br><br><br><br>
-
-<br>
-
-<div id="wrapper">
-<% if @review.visitor == current_user %>
-<%= link_to "Edit Review", edit_property_review_path(@review) %> 
-<% end %>
-</div>
-
+    <div id="wrapper">
+        <div class="container">
+            <h4><%= "Review Title:" %> <div> <%= @review.title %></h4>
+            <%= "Date of Visit:" %> <div> <%= @review.date %><br><br>
+            <%= "Paranormal Sights?" %> <div> <%= @review.sighting %><br><br>
+            <%= "Any ghastly noises?" %> <div> <%= @review.noise %><br><br>
+            <%= "Any frightening smells?" %> <div> <%= @review.smell %><br><br>
+            <%= "Cold spots?"  %> <div> <%= @review.cold_spot %><br><br>
+            <%= "Spooky Summary:"  %> <div> <%= @review.summary %><br><br>
+            <%= "How scary was this experience (1-10)?"  %> <div> <%= @review.rating %><br><br>
+        </div>
+            <br>
+                <div id="wrapper">
+                <% if @review.visitor == current_user %>
+                <%= link_to "Edit Review", edit_property_review_path(@review) %> 
+                <% end %>
+                </div>
+    </div>
 </div>
