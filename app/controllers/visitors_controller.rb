@@ -11,7 +11,7 @@ class VisitorsController < ApplicationController
             flash[:success] = "Your account has been created!"
             redirect_to @visitor #showpage
         else 
-            flash[:username] = "Username already taken. Please try again."
+            flash[:username] = "Please try again."
             redirect_to '/signup'
         end 
     end 
