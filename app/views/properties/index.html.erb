@@ -1,18 +1,13 @@
 <div id="app">
 
-<h1> All Haunted Properties </h1>
-
-<% @properties.each do |property| %>
-        <%= link_to property.name, property_path(property) %>
-        <%= property.location %>
-        <br><br>
-<% end %>
-
-
-<br><br><br><br><br>
-
-<div id="wrapper">
-<%= link_to "Add a Spooky Location", new_property_path %>
-<div>
-
+        <h1> All Haunted Properties </h1>
+                <% @properties.each do |property| %>
+                        <%= link_to property.name, property_path(property) %>
+                        <%= property.location %>
+                        <br><br>
+                <% end %>
+                <br><br><br><br><br>
+                        <div id="wrapper">
+                                <%= link_to "Add a Spooky Location", new_property_path %>
+                        </div>
 </div>
