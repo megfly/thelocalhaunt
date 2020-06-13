@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Overview:
+This app is a Ruby-on-Rails app. The Local Haunt is a haunted property reviews app! Users can add haunted properties and review haunted properties. The review form has questions you would see on a paranormal investigator tv show. For example, what paranormal apparitions did you see? Were there any cold spots? BBooOOooOOOOoo
 
-Things you may want to cover:
+Contributor's Guide: 
+https://www.contributor-covenant.org/
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+License: 
+https://opensource.org/licenses/MIT
