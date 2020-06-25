@@ -1,21 +1,18 @@
 class PropertiesController < ApplicationController
+    before_action :redirect_if_not_logged_in
+    before_action :set_property, only: [:show, :edit, :update, :destroy]
 
     def index 
         @properties = Property.all 
     end 
 
     def new 
-        if logged_in? 
-            @property = Property.new
-        else 
-            redirect_if_not_logged_in 
-        end 
+        @property = Property.new
     end 
 
     def create 
         @property = Property.new(prop_params)
-        if @property.valid?
-            @property.save 
+        if @property.save 
             redirect_to @property
         else 
             render :new
@@ -23,25 +20,19 @@ class PropertiesController < ApplicationController
     end 
 
     def show 
-        find_property
     end 
 
     def edit 
-        if logged_in?
-            find_property
-        else 
-            redirect_if_not_logged_in 
-        end 
     end 
 
     def update 
-        if logged_in?
-            find_property
-            @property.update(prop_params)
-            redirect_to property_path
-        else 
-            redirect_to @property
-        end 
+        @property.update(prop_params)
+        redirect_to property_path
+    end 
+
+    def destroy
+        Property.find(params[:id]).destroy 
+        redirect_to property_path
     end 
 
     private 
@@ -50,7 +41,8 @@ class PropertiesController < ApplicationController
         params.require(:property).permit(:name, :location, :description)
     end 
 
-    def find_property
+    def set_property
         @property = Property.find_by_id(params[:id])
     end 
+
 end

@@ -13,10 +13,11 @@
 
 <!-- Navigation-->
     <ul>
-          <li><%= link_to "Login", login_path %></li>
+      <% if logged_in? %>
           <li><%= link_to "All Haunted Properties", properties_path %></li>
           <li><%= link_to "All Haunted Reviews", reviews_path %></li>
           <li><%= link_to "Logout", logout_path, method:"delete" %></li>
+        <% end %>
     </ul>
 
 <!-- Flash Messages -->

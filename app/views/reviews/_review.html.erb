@@ -1,7 +1,7 @@
 <%= form_for @review do |f| %>
-    <%= f.hidden_field :property_id %>
-    <%= f.hidden_field :visitor_id %>
-
+    <% f.hidden_field :visitor_id %>
+    <% f.hidden_field :property_id %>
+    
     <label>Review title:</label><br>
     <%= f.text_field :title %><br>
 

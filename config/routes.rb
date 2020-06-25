@@ -15,19 +15,15 @@ Rails.application.routes.draw do
   #omniauth callback route
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
-  resources :reviews
-  resources :visitors do  #visitors/1/properties
-    resources :properties
+  resources :visitors, only: [:show] do 
+    resources :reviews, only: [:show, :index]
   end 
-  resources :properties do #properties/1/reviews
-    resources :reviews
+
+  resources :reviews, only: [:index]
+
+  resources :properties, only: [:index, :show, :new, :create, :edit, :update, :destroy] do 
+    resources :reviews, only: [:show, :new, :create, :edit, :update, :destroy]
   end 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
-
-
-
- #properties/:property_id/reviews 
- #properties/:property_id/reviews/new
- #properties/property_id/reviews/5

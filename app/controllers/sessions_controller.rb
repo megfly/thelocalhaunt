@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
     def home 
     end 
 
+    def new
+    end
+
     def create 
         @visitor = Visitor.find_by(username: params[:visitor][:username]) #params coming from loginform.
 

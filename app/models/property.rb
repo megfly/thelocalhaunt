@@ -3,4 +3,6 @@ class Property < ApplicationRecord
     has_many :visitors, through: :reviews #@property.reviews
 
     validates :name, :location, :description, presence: true 
+
+    
 end

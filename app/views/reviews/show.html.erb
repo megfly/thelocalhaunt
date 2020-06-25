@@ -14,6 +14,7 @@
                 <div id="wrapper">
                 <% if @review.visitor == current_user %>
                 <%= link_to "Edit Review", edit_property_review_path(@review) %> 
+                <%= link_to "Delete Review", property_review_path(@review) %>
                 <% end %>
                 </div>
     </div>

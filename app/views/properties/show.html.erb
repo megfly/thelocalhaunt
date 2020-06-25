@@ -9,13 +9,17 @@
         <h4> Frightening <%= @property.name %> Reviews:</h4>
             <% @property.reviews.ordered_rating.each do |r| %>
                 <%= link_to "#{r.title}", property_review_path(@property, r) %> 
-                Spookiness rating of <%= "#{r.rating}" %><br><br>
+                Spookiness rating of <%= "#{r.rating}" %><br>
+                by <%= r.visitor.username %> 
+                <br><br>
             <% end %>
             <br><br><br>
                 <div id="wrapper">
+                    <% if current_user %>
                     | <%= link_to "Add a Review for #{@property.name}", new_property_review_path(@property) %> |
                     <%= link_to "Edit Property", edit_property_path(@property) %> |
+                    <%= link_to "Delete Property", property_path(@property) %> |
                 <br>
+                <% end %>
                 </div>
 </div>
-
