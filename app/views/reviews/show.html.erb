@@ -9,12 +9,14 @@
             <%= "Cold spots?"  %> <div> <%= @review.cold_spot %><br><br>
             <%= "Spooky Summary:"  %> <div> <%= @review.summary %><br><br>
             <%= "How scary was this experience (1-10)?"  %> <div> <%= @review.rating %><br><br>
+            
         </div>
             <br>
                 <div id="wrapper">
-                <% if @review.visitor == current_user %>
-                <%= link_to "Edit Review", edit_property_review_path(@review) %> 
-                <%= link_to "Delete Review", property_review_path(@review) %>
+                
+                <% if current_user.id == @review.visitor_id %>
+                <%= link_to "Edit Review", edit_property_review_path(@property, @review) %> 
+                <%= link_to "Delete Review", property_review_path(@property, @review) %>
                 <% end %>
                 </div>
     </div>

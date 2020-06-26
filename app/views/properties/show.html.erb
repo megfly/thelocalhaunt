@@ -15,11 +15,13 @@
             <% end %>
             <br><br><br>
                 <div id="wrapper">
-                    <% if current_user %>
-                    | <%= link_to "Add a Review for #{@property.name}", new_property_review_path(@property) %> |
+                    
+                    |<%= link_to "Add a Review for #{@property.name}", new_property_review_path(@property) %> |
+                  
+                    <% if @property.visitor_id == current_user.id %>
                     <%= link_to "Edit Property", edit_property_path(@property) %> |
-                    <%= link_to "Delete Property", property_path(@property) %> |
+                    <% end %>
                 <br>
-                <% end %>
+               
                 </div>
 </div>

@@ -3,13 +3,19 @@
     <%= flash[:message] %>
 
         <h1> All Haunted Reviews! </h1>
+       
+        <br><br>
 
             <% @reviews.most_recent_review.each do |r| %>
-                <%= link_to r.property.name, property_review_path(r.property_id, r) %> 
-                reviewed on <%= r.date %>
-                <br>  
-                by <%= r.visitor.username %>  <br><br>
+             
+                <%= link_to r.title, property_review_path(r.property_id, r) %> 
+                reviewed on <%= r.date %> 
+                <br>
+                by <%= r.visitor.username %> for the <%= r.property.name %> location
+            
+               <br><br>
             <% end %>
+            
             
             <br><br><br><br><br><br><br><br>
 </div>

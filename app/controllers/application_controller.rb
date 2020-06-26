@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
     helper_method :current_user #access to views
     helper_method :logged_in?
+    helper_method :current_user?
 
     private 
 
@@ -9,6 +10,10 @@ class ApplicationController < ActionController::Base
     def current_user 
         @current_visitor ||= Visitor.find_by(id: session[:visitor_id])
          #This Operator only sets the variable if the variable is false or Nil. so x ||= y this means x || x = y so if x is nil or false set x to be the value of y. 
+    end 
+
+    def current_user?(visitor)
+        visitor == current_user
     end 
 
     def logged_in? 
